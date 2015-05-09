@@ -25,7 +25,7 @@ module Associatable
         #{self.class.table_name} ON #{self.class.table_name}.#{through_options.foreign_key} = #{through_table}.id;
       SQL
 
-      x.first
+      source_options.model_class.parse_all(x).first
       # use constantize
     end
   end
