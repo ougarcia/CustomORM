@@ -1,5 +1,5 @@
 require_relative 'db_connection'
-require_relative '01_sql_object'
+require_relative 'model_base'
 
 module Searchable
 
@@ -21,6 +21,6 @@ module Searchable
 
 end
 
-class SQLObject
+class ModelBase
   extend Searchable
 end

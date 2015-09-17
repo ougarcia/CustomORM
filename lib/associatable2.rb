@@ -1,4 +1,4 @@
-require_relative '03_associatable'
+require_relative 'associatable'
 
 # Phase IV
 module Associatable
@@ -15,14 +15,17 @@ module Associatable
       through_table = through_options.table_name
       x = DBConnection.execute(<<-SQL)
         SELECT
-        #{source_table}.*
+          #{source_table}.*
         FROM
-        #{source_table}
+          #{source_table}
         INNER JOIN
-        #{through_table}
-        ON #{source_table}.id = #{through_table}.#{source_options.foreign_key}
+          #{through_table}
+        ON
+          #{source_table}.id = #{through_table}.#{source_options.foreign_key}
         INNER JOIN
-        #{self.class.table_name} ON #{self.class.table_name}.#{through_options.foreign_key} = #{through_table}.id;
+          #{self.class.table_name}
+        ON
+          #{self.class.table_name}.#{through_options.foreign_key} = #{through_table}.id;
       SQL
 
       source_options.model_class.parse_all(x).first

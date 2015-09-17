@@ -1,4 +1,4 @@
-require_relative '02_searchable'
+require_relative 'model_base'
 require 'active_support/inflector'
 
 class AssocOptions
@@ -66,6 +66,6 @@ module Associatable
   end
 end
 
-class SQLObject
+class ModelBase
   extend Associatable
 end
