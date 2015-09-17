@@ -1,7 +1,6 @@
 require_relative '02_searchable'
 require 'active_support/inflector'
 
-# Phase IIIa
 class AssocOptions
   attr_accessor(
     :foreign_key,
@@ -69,5 +68,4 @@ end
 
 class SQLObject
   extend Associatable
-  # Mixin Associatable here...
 end

@@ -4,7 +4,7 @@ require 'active_support/inflector'
 # of this project. It was only a warm up.
 
 class SQLObject
-    
+
   def self.columns
     result = DBConnection.execute2(<<-SQL)
       SELECT
@@ -107,9 +107,9 @@ class SQLObject
 
   def update
     columns_line = self.class.columns.map do |col_name|
-      "#{col_name} = ?" 
+      "#{col_name} = ?"
     end.join(", ")
-      
+
     DBConnection.execute(<<-SQL, self.attribute_values, self.id)
       UPDATE
         #{self.class.table_name}
